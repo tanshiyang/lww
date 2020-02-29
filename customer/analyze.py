@@ -45,7 +45,8 @@ def analyze():
         worksheet = workbook.add_worksheet(year_tag)
         write_sheet(workbook, worksheet, year_tag, source_data)
     workbook.close()
-
+    print("输入结果文件：{0}".format(result_file_name))
+    os.startfile(result_file_name)
 
 def write_sheet(workbook=xlsxwriter.Workbook, worksheet=xlsxwriter.Workbook.worksheet_class, year_tag=str,
                 source_data=dict):
@@ -70,7 +71,7 @@ def write_sheet(workbook=xlsxwriter.Workbook, worksheet=xlsxwriter.Workbook.work
         worksheet.write_formula("C" + row_index, formula, percent_format)
         worksheet.write("D" + row_index, data[group_name].该年日均资产.sum(), data_format)
         worksheet.write("E" + row_index, data[group_name].该年交易量.sum(), data_format)
-        worksheet.write("F" + row_index, data[group_name].该年7u7lpmkn n123净佣金.sum(), data_format)
+        worksheet.write("F" + row_index, data[group_name].该年净佣金.sum(), data_format)
 if __name__ == '__main__':
     print("")
     analyze()
